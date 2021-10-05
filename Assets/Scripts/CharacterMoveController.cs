@@ -5,16 +5,19 @@ using UnityEngine;
 public class CharacterMoveController : MonoBehaviour
 {
 
+    public float moveSpeed = 7.0f;
     public float jumpForce = 7.0f;
 
+    private float boundaries = 2.0f;
+    private float baseSpeed;
     private Rigidbody2D rb;
     private Animator anim;
-    private bool isGrounded;
+    private bool isGrounded = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        setupRef();
+        SetupRef();
     }
 
     // Update is called once per frame
@@ -24,7 +27,14 @@ public class CharacterMoveController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce * 2, ForceMode2D.Impulse);
         }
-        updateAnim();
+        UpdateAnim();
+        MoveChar();
+        ClampPosition();
+    }
+
+    private void LateUpdate()
+    {
+        DontMoveWhenGrounded();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -43,13 +53,34 @@ public class CharacterMoveController : MonoBehaviour
         }
     }
 
-    private void setupRef()
+    private void DontMoveWhenGrounded()
+    {
+        if (isGrounded)
+            moveSpeed = 0.0f;
+        else
+            moveSpeed = baseSpeed;
+    }
+
+    private void ClampPosition()
+    {
+        transform.position = new Vector2(Mathf.Clamp(transform.position.x, -boundaries, boundaries), transform.position.y);
+    }
+
+    private void MoveChar()
+    {
+        float dirX = Input.acceleration.x * moveSpeed;
+        float h = Input.GetAxis("Horizontal") * moveSpeed;
+        rb.velocity = new Vector2(dirX + h, rb.velocity.y);
+    }
+
+    private void SetupRef()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        baseSpeed = moveSpeed;
     }
 
-    private void updateAnim()
+    private void UpdateAnim()
     {
         anim.SetBool("isJumping", !isGrounded);
         anim.SetFloat("verticalVelocity", rb.velocity.y);
