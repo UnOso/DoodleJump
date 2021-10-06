@@ -220,6 +220,7 @@ GameObject:
   - component: {fileID: 269204753}
   - component: {fileID: 269204755}
   - component: {fileID: 269204754}
+  - component: {fileID: 269204756}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Player
@@ -410,6 +411,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7485066, y: 0.0947026}
   m_EdgeRadius: 0
+--- !u!114 &269204756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269204748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6419ed9f157cfc04fa4cacca26074016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackCD: 0.5
+  timeSinceLastAttack: 0
 --- !u!1 &395798980
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +483,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!61 &395798983
 BoxCollider2D:
@@ -494,7 +509,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!4 &395798984
 Transform:
@@ -1053,7 +1068,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.257699, y: -0.13036036}
+  m_Offset: {x: -0.025590658, y: -0.13036036}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1064,7 +1079,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8.7202015, y: 0.9601741}
+  m_Size: {x: 5.0064683, y: 0.9601741}
   m_EdgeRadius: 0
 --- !u!1 &2124095394
 GameObject:

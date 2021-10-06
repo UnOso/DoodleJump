@@ -14,6 +14,10 @@ public class CharacterMoveController : MonoBehaviour
     private Animator anim;
     private bool isGrounded = false;
 
+    public Rigidbody2D Rb { get => rb; set => rb = value; }
+    public Animator Anim { get => anim; set => anim = value; }
+    public bool IsGrounded { get => isGrounded; set => isGrounded = value; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -69,8 +73,10 @@ public class CharacterMoveController : MonoBehaviour
     private void MoveChar()
     {
         float dirX = Input.acceleration.x * moveSpeed;
-        float h = Input.GetAxis("Horizontal") * moveSpeed;
-        rb.velocity = new Vector2(dirX + h, rb.velocity.y);
+        float h = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        rb.velocity = new Vector2(Mathf.Clamp(dirX + h, -moveSpeed, moveSpeed), rb.velocity.y);
+        if(dirX+h != 0)
+            transform.localScale = new Vector2(Mathf.Clamp(Mathf.Round(dirX + h),-1.0f, 1.0f), 1.0f);
     }
 
     private void SetupRef()
