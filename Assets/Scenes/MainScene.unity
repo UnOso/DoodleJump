@@ -413,10 +413,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 269204748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6419ed9f157cfc04fa4cacca26074016, type: 3}
+  m_Script: {fileID: 11500000, guid: 062dddb525831ec488167f88e5c35013, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCD: 0.2
+  attackCD: 0.5
 --- !u!1 &395798980
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 395798980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 232ec23000b69ed47ac753e4132f7215, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d5dae572fdd3a142bd32ee9a15eb734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 269204752}
@@ -553,10 +553,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbc7f27090f51449abd877e825561eb, type: 3}
+  m_Script: {fileID: 11500000, guid: c4bad841696ceab4b8ca1f8a32f66076, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 269204752}
+  smoothing: 0.1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
