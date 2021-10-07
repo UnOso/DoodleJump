@@ -19,8 +19,8 @@ public class KeepOffset : MonoBehaviour
     void Update()
     {
         if (keepOffsetX)
-            transform.position = new Vector2(target.position.x + offset.x, transform.position.y);
+            transform.position = new Vector3(target.position.x + offset.x, transform.position.y, transform.position.z);
         if (keepOffsetY)
-            transform.position = new Vector2(transform.position.x, target.position.y + offset.y);
+            transform.position = new Vector3(transform.position.x, target.position.y + offset.y, transform.position.z);
     }
 }

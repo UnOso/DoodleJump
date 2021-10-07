@@ -75,7 +75,7 @@ public class CharacterMoveController : MonoBehaviour
         float dirX = Input.acceleration.x * moveSpeed;
         float h = Input.GetAxisRaw("Horizontal") * moveSpeed;
         rb.velocity = new Vector2(Mathf.Clamp(dirX + h, -moveSpeed, moveSpeed), rb.velocity.y);
-        if(dirX+h != 0)
+        if(dirX+h > 0.5f || dirX + h < -0.5f)
             transform.localScale = new Vector2(Mathf.Clamp(Mathf.Round(dirX + h),-1.0f, 1.0f), 1.0f);
     }
 
