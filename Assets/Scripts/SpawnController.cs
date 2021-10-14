@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SpawnController : MonoBehaviour
 {
-    public Transform[] spawnPos = new Transform[2];
+    public Transform[] platSpawnPos = new Transform[2];
     public GameObject platform;
-    public float distanceToSpawn = 3.0f;
+    public float distanceToSpawnPlatform = 3.0f;
     private float distanceTravelled;
 
     // Start is called before the first frame update
@@ -18,13 +18,13 @@ public class SpawnController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.position.y >= distanceTravelled + distanceToSpawn)
-            Spawn(transform.position.y);
+        if (transform.position.y >= distanceTravelled + distanceToSpawnPlatform)
+            SpawnPlatform(transform.position.y);
     }
 
-    private void Spawn(float yPos)
+    private void SpawnPlatform(float yPos)
     {
-        Instantiate(platform, new Vector2(spawnPos[pickNumber()].position.x, spawnPos[0].position.y), Quaternion.identity);
+        Instantiate(platform, new Vector2(platSpawnPos[pickNumber()].position.x, platSpawnPos[0].position.y), Quaternion.identity);
         distanceTravelled = transform.position.y;
     }
 
