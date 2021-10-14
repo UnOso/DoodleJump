@@ -27,10 +27,7 @@ public class CharacterMoveController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGrounded && Input.GetMouseButtonDown(0))
-        {
-            rb.AddForce(Vector3.up * jumpForce * 2, ForceMode2D.Impulse);
-        }
+        Jump();
         UpdateAnim();
         MoveChar();
         ClampPosition();
@@ -77,6 +74,15 @@ public class CharacterMoveController : MonoBehaviour
         rb.velocity = new Vector2(Mathf.Clamp(dirX + h, -moveSpeed, moveSpeed), rb.velocity.y);
         if(dirX+h > 0.5f || dirX + h < -0.5f)
             transform.localScale = new Vector2(Mathf.Clamp(Mathf.Round(dirX + h),-1.0f, 1.0f), 1.0f);
+    }
+
+    private void Jump()
+    {
+        if (isGrounded && Input.GetMouseButtonDown(0))
+        {
+            rb.velocity = Vector3.zero;
+            rb.AddForce(Vector3.up * jumpForce * 2, ForceMode2D.Impulse);
+        }
     }
 
     private void SetupRef()
